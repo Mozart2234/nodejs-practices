@@ -1,0 +1,40 @@
+Arguments: 
+  /Users/mozart2234/.nvm/versions/node/v14.15.5/bin/node /Users/mozart2234/.nvm/versions/node/v14.15.5/bin/yarn add nodemon
+
+PATH: 
+  /usr/local/opt/mysql@5.7/bin:/Users/mozart2234/.rbenv/shims:/Users/mozart2234/.nvm/versions/node/v14.15.5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/usr/local/opt/mysql@5.7/bin:/Users/mozart2234/.rbenv/shims:/Users/mozart2234/.nvm/versions/node/v14.15.5/bin
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  14.15.5
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/mozart2234/Practices/nodejs/basics/package.json: Unexpected token } in JSON at position 161
+      at JSON.parse (<anonymous>)
+      at /Users/mozart2234/.nvm/versions/node/v14.15.5/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/Users/mozart2234/.nvm/versions/node/v14.15.5/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /Users/mozart2234/.nvm/versions/node/v14.15.5/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "basics-of-nodejs",
+    "version": "1.0.0",
+    "main": "app.js",
+    "author": "Alexei",
+    "license": "MIT",
+    "scripts": {
+      "start": "node app.js",
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
