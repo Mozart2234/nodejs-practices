@@ -1,16 +1,1 @@
-[
-  {
-    "id": "12312",
-    "title": "Correr o morir",
-    "imageUrl": "https://lh6.googleusercontent.com/-B5ZyGGSaIy4/TWxAe4iui4I/AAAAAAAAACM/1HyP5qBrRj8/s1600/Maze_Runner_-_cover_sp.jpg",
-    "description": "Al despertar dentro de un oscuro elevador en movimiento, lo único que Thomas logra recordar es su nombre. No sabe quién es. Tampoco hacia dónde va.",
-    "price": "125"
-  },
-  {
-    "title": "Scorch trials",
-    "imageUrl": "https://www.lingozing.com/wp-content/uploads/2019/11/en_es_1b1d0212-ae09-4b51-9812-d5b2656b667a-18.png",
-    "description": "With over 6.5 million copies of the Maze Runner series of books sold and a franchise-launching film that earned over $340 million",
-    "price": "25",
-    "id": "0.02790137272598936"
-  }
-]
+[{"title":"Scorch trials","imageUrl":"https://www.lingozing.com/wp-content/uploads/2019/11/en_es_1b1d0212-ae09-4b51-9812-d5b2656b667a-18.png","description":"With over 6.5 million copies of the Maze Runner series of books sold and a franchise-launching film that earned over $340 million","price":"25","id":"0.02790137272598936"}]
