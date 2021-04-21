@@ -5,6 +5,20 @@
   <%- include('../includes/navigation') %>
   <main>
     <p>Cart</p>
+    <%  if (cart.products.length > 0) { %>
+      <ul>
+        <% cart.products.forEach(product => { %>
+          <li>
+            <p><%= product.title %> (<%= product.quantity %>)</p>
+            <form action="/cart-delete-item/<%= product.id %>" method="POST">
+              <button class="btn" type="submit"> Delete</button>
+            </form>
+          </li>
+        <% }) %> 
+      </ul>
+    <% } else { %>
+      <h1>No products in Cart!</h1>
+    <% } %>  
   </main>
   <%- include('../includes/footer') %>
 </body>

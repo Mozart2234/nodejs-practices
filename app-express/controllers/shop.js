@@ -34,9 +34,12 @@ const getIndex = (_, res) => {
 }
 
 const getCart = (_, res) => {
-  res.render('shop/cart', {
-    pageTitle: "Your Cart",
-    path: '/cart',
+  Cart.getCart(cart => {
+    res.render('shop/cart', {
+      pageTitle: "Your Cart",
+      path: '/cart',
+      cart
+    })
   })
 }
 
@@ -47,6 +50,12 @@ const postCard = (req, res) => {
     res.redirect('/');
   })
 }
+
+const postDeleteProduct = (req, res) => {
+  const productId = req.params.id
+  Cart.deleteById(productId);
+  res.redirect('/cart');
+} 
 
 const getCheckout = (_, res) => {
   res.render('shop/checkout', {
@@ -70,5 +79,6 @@ module.exports = {
   getCart,
   postCard,
   getCheckout,
-  getOrders
+  getOrders,
+  postDeleteProduct
 }

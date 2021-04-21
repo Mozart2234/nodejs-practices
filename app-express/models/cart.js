@@ -39,8 +39,13 @@ class Cart {
 
   static deleteById(id) {
     fs.readFile(FILE, (err, data) => {
+      if(err) return;
+
       const updatedCart = { ...JSON.parse(data) };
       const product = updatedCart.products.find(product => product.id === id);
+
+      if(!product) return;
+
       const updatedProducts = updatedCart.products.filter(product => product.id !== id);
 
       updatedCart.totalPrice -= product.price * product.quantity;
@@ -49,6 +54,14 @@ class Cart {
       fs.writeFile(FILE, JSON.stringify(updatedCart), (err) => {
         console.log(err);
       })
+    })
+  }
+
+  static getCart(cb) {
+    fs.readFile(FILE, (err, data) => { 
+      if(err) return cb({});
+
+      return cb(JSON.parse(data));
     })
   }
 }
