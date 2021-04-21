@@ -16,9 +16,17 @@ const postAddProduct = (req, res) => {
     description 
   } = req.body;
   
-  const product = new Product(null, title, imageUrl, description, price);
-  product.save();
-  res.redirect('/')
+  Product.create({
+    title,
+    imageUrl,
+    price,
+    description
+  }).then(result => {
+    res.redirect('/')
+  }).catch(err => {
+    console.log(err);
+  })
+  
 }
 
 const getEditProduct = (req, res) => {
@@ -68,13 +76,13 @@ const deleteProduct = (req, res) => {
 }
 
 const getProducts = (_, res) => {
-  Product.fetchAll((products) => {
+  Product.findAll().then((products) => {
     res.render('admin/products', { 
       products, 
       pageTitle: 'Admin Products', 
       path: '/admin/products',
     })
-  });
+  }).catch(err => console.log(err));
 }
 
 module.exports = {

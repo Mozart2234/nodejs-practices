@@ -5,7 +5,9 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-const errorsController = require('./controllers/errors')
+const errorsController = require('./controllers/errors');
+
+const sequelize = require('./util/database');
 
 // app.engine('.hbs', expressHbs({
 //   extname: '.hbs', 
@@ -30,6 +32,12 @@ app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 app.use(errorsController.notFound)
 
-app.listen(PORT, () => {
-  console.log(`Listening on Port ${PORT}`);
-})
+sequelize.sync()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Listening on Port ${PORT} 🚀🚀🚀`);
+    })
+  })
+  .catch(err => console.log(result));
+
+
