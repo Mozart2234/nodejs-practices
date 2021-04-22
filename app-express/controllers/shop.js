@@ -22,15 +22,14 @@ const getProduct = (req, res) => {
   }).catch(err => console.log(err));
 }
 
-const getIndex = (_, res) => {
-  Product.findAll().then((products) => {
-    res.render('shop/index', { 
-      products, 
-      pageTitle: 'Shop', 
-      path: '/',
-    })
-  }).catch(err => console.error(err));
+const getIndex = async (_, res) => {
+  const products = await Product.findAll();
 
+  res.render('shop/index', { 
+    products, 
+    pageTitle: 'Shop', 
+    path: '/',
+  })
 }
 
 const getCart = (_, res) => {

@@ -8,6 +8,8 @@ const PORT = 3000;
 const errorsController = require('./controllers/errors');
 
 const sequelize = require('./util/database');
+const Product = require('./models/product');
+const User = require('./models/user');
 
 // app.engine('.hbs', expressHbs({
 //   extname: '.hbs', 
@@ -26,14 +28,39 @@ const shopRoutes = require('./routes/shop')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
+app.use((req, res, next) => {
+  User.findByPk(1)
+    .then(user => {
+      req.user = user;
+      next();
+    })
+    .catch(err => console.log(err))
+})
 
 // Routes
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 app.use(errorsController.notFound)
 
-sequelize.sync()
+Product.belongsTo(User, { constraints: true, onDelete: 'CASCADE' });
+User.hasMany(Product);
+
+sequelize
+  // .sync({force: true})
+  .sync()
   .then(() => {
+    return User.findByPk(1);
+  })
+  .then(user => {
+    if(!user) {
+      return User.create({
+        name: 'Alexei',
+        email: 'test@test.com'
+      })
+    }
+    return user;
+  })
+  .then((_) => {
     app.listen(PORT, () => {
       console.log(`Listening on Port ${PORT} 🚀🚀🚀`);
     })
