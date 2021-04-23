@@ -1,5 +1,5 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 
 const {
   getProducts,
@@ -9,11 +9,11 @@ const {
   getCheckout,
   getOrders,
   getProduct,
-  postDeleteProduct,
+  postDeleteProduct
 } = require('../controllers/shop')
 
 // GET => /
-router.get('/', getIndex);
+router.get('/', getIndex)
 
 // GET => /products
 router.get('/products', getProducts)
@@ -27,9 +27,8 @@ router.get('/cart', getCart)
 // POST => /cart
 router.post('/cart', postCard)
 
-
 // DELETE => /cart-delete-item/:id
-router.post('/cart-delete-item/:id', postDeleteProduct);
+router.post('/cart-delete-item/:id', postDeleteProduct)
 
 // GET => /checkout
 router.get('/checkout', getCheckout)
@@ -37,4 +36,4 @@ router.get('/checkout', getCheckout)
 // GET => /orders
 router.get('/orders', getOrders)
 
-module.exports = router;
+module.exports = router
