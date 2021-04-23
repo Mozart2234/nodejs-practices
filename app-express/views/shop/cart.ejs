@@ -4,14 +4,14 @@
 <body>
   <%- include('../includes/navigation') %>
   <main>
-    <p>Cart</p>
-    <%  if (cart.products.length > 0) { %>
-      <ul>
-        <% cart.products.forEach(product => { %>
-          <li>
-            <p><%= product.title %> (<%= product.quantity %>)</p>
+    <%  if (products.length > 0) { %>
+      <ul class="cart__item-list">
+        <% products.forEach(product => { %>
+          <li class="cart__item">
+            <h1><%= product.title %></h1>
+            <h2>Quantity: <%= product.cartItem.quantity %></h2>
             <form action="/cart-delete-item/<%= product.id %>" method="POST">
-              <button class="btn" type="submit"> Delete</button>
+              <button class="btn danger" type="submit"> Delete</button>
             </form>
           </li>
         <% }) %> 

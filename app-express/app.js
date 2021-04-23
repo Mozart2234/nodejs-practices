@@ -10,6 +10,8 @@ const errorsController = require('./controllers/errors')
 const sequelize = require('./util/database')
 const Product = require('./models/product')
 const User = require('./models/user')
+const Cart = require('./models/cart')
+const CartItem = require('./models/cart-item')
 
 // app.engine('.hbs', expressHbs({
 //   extname: '.hbs',
@@ -44,9 +46,13 @@ app.use(errorsController.notFound)
 
 Product.belongsTo(User, { constraints: true, onDelete: 'CASCADE' })
 User.hasMany(Product)
+User.hasOne(Cart)
+Cart.belongsTo(User)
+Product.belongsToMany(Cart, { through: CartItem })
+Cart.belongsToMany(Product, { through: CartItem })
 
 sequelize
-  // .sync({force: true})
+  // .sync({ force: true })
   .sync()
   .then(() => {
     return User.findByPk(1)
@@ -60,9 +66,12 @@ sequelize
     }
     return user
   })
+  .then((user) => {
+    return user.createCart()
+  })
   .then((_) => {
     app.listen(PORT, () => {
       console.log(`Listening on Port ${PORT} 🚀🚀🚀`)
     })
   })
-  .catch(err => console.log(result))
+  .catch(err => console.log(err))
