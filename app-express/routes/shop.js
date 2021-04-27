@@ -9,7 +9,8 @@ const {
   getCheckout,
   getOrders,
   getProduct,
-  postDeleteProduct
+  postDeleteProduct,
+  createOrder
 } = require('../controllers/shop')
 
 // GET => /
@@ -35,5 +36,8 @@ router.get('/checkout', getCheckout)
 
 // GET => /orders
 router.get('/orders', getOrders)
+
+// POST => /create-order
+router.post('/create-order', createOrder);
 
 module.exports = router

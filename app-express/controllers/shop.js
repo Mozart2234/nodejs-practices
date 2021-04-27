@@ -37,7 +37,6 @@ const getCart = (req, res) => {
     .then(cart => {
       return cart.getProducts()
     }).then(products => {
-      console.log('Products', products)
       res.render('shop/cart', {
         pageTitle: 'Your Cart',
         path: '/cart',
@@ -97,6 +96,12 @@ const getOrders = (_, res) => {
   })
 }
 
+const createOrder = (req, res, next) => {
+  req.user.getCart().then(cart => {
+
+  }).catch(err => console.log(err))
+}
+
 module.exports = {
   getIndex,
   getProducts,
@@ -105,5 +110,6 @@ module.exports = {
   postCard,
   getCheckout,
   getOrders,
-  postDeleteProduct
+  postDeleteProduct,
+  createOrder
 }
